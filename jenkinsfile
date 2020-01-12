@@ -1,9 +1,13 @@
 pipeline
 {
     agent any
+    environment 
+        {
+        PATH = "/opt/maven:$PATH"
+        }
 
     stages
-    {
+      {
         stage('git checkout') 
             {
                 steps 
@@ -11,6 +15,14 @@ pipeline
                     git changelog: false, poll: false, url: 'https://github.com/sunilkumaranna/simple-java-project.git'
                 }
             }
+         stage('maven build') 
+             {
+                steps 
+                {
+                    sh " mvn clean compile test package"
+                }
+            }
+            
 
         
     }
