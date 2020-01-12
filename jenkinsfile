@@ -1,0 +1,18 @@
+pipeline
+{
+    agent any
+
+    stages
+    {
+        stage('git checkout') 
+            {
+                steps 
+                {
+                    git changelog: false, poll: false, url: 'https://github.com/sunilkumaranna/simple-java-project.git'
+                }
+            }
+
+        
+    }
+
+}
