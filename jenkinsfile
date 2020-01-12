@@ -6,8 +6,10 @@ pipeline
         {
         PATH = "/opt/maven:$PATH"
         }
-
-    stages
+     triggers {
+  cron 'H * * * *'
+            }
+   stages
       {
         stage('git checkout') 
             {
